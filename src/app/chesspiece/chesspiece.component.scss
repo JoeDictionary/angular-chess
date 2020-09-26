@@ -1,0 +1,14 @@
+:host {
+  display: table-cell;
+  border: 0px;
+}
+
+img {
+  width: 80px;
+  height: 80px;
+  vertical-align: top;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}

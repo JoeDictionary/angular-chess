@@ -1,0 +1,37 @@
+<div class="board-container">
+  <div
+    class="board-row"
+    *ngFor="let row of board; let y = index; let evenRow = even"
+  >
+    <div
+      *ngFor="let square of row; let x = index; let oddSquare = odd"
+      class="board-square"
+      [ngClass]="{ 'dark-square': oddSquare === evenRow }"
+    ></div>
+  </div>
+
+  <div>
+    <app-chesspiece [type]="'pawn'" [color]="'w'"></app-chesspiece>
+  </div>
+
+  <div>
+    <app-chesspiece [type]="'bishop'" [color]="'w'"></app-chesspiece>
+  </div>
+</div>
+
+<!-- https://mattlewis92.github.io/angular-draggable-droppable/docs/directives/DraggableDirective.html -->
+
+<!--
+	Shopify DRAGGABLE wrapper:
+	https://github.com/mikerhyssmith/draggable-ng
+-->
+
+<!--
+	(cdkDragStarted) = "log($event, 'cdkDragStarted');"
+				(cdkDragMoved) = "log($event, 'cdkDragMoved');"
+				(cdkDragExited) = "log($event, 'cdkDragExited');"
+				(cdkDragEntered) = "log($event, 'cdkDragEntered');"
+				(cdkDragEnded) = "log($event, 'cdkDragEnded');"
+				(cdkDragReleased) = "log($event, 'cdkDragReleased');" -->
+
+<!-- https://stackoverflow.com/questions/62903592/drag-and-drop-custom-static-components-using-angular-material-cdk -->

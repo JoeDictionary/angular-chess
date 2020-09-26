@@ -1,0 +1,73 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+}
+
+.board-container {
+  display: table;
+  row-gap: 0;
+}
+
+.board-row {
+  display: table-row;
+}
+
+.board-square {
+  width: 80px;
+  min-width: 80px;
+  max-width: 80px;
+  height: 80px;
+  min-height: 80px;
+  max-height: 80px;
+  display: table-cell;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  background-color: #f0d9b5;
+}
+
+.dark-square {
+  background-color: #b58863;
+}
+
+app-chesspiece {
+  width: 80px;
+  min-width: 80px;
+  max-width: 80px;
+
+  height: 80px;
+  min-height: 80px;
+  max-height: 80px;
+
+  // border: dotted black 1px;
+  vertical-align: top;
+}
+
+.piece {
+  height: 80px;
+  width: 80px;
+  display: table-cell;
+}
+
+.cdk-drag-placeholder {
+  //   opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.test {
+  width: 80px;
+  height: 80px;
+  background-color: black;
+}
+
+.test2 {
+  width: 100px;
+  height: 100px;
+  background-color: gray;
+}
