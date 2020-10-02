@@ -1,12 +1,10 @@
-import { ɵangular_material_src_cdk_drag_drop_drag_drop_a } from '@angular/cdk/drag-drop';
 import {
   AfterViewInit,
   Component,
   Input,
   OnInit,
-  ElementRef,
+  ElementRef
 } from '@angular/core';
-import { Draggable } from '@shopify/draggable';
 
 @Component({
   selector: 'app-chesspiece',
@@ -14,16 +12,11 @@ import { Draggable } from '@shopify/draggable';
   styleUrls: ['./chesspiece.component.scss'],
 })
 export class ChesspieceComponent implements OnInit, AfterViewInit {
-  chessImg = 'w_pawn.svg';
   pieceTypes = ['pawn', 'rook', 'knight', 'bishop', 'queen', 'king'];
-  private _color: string;
-  private _type: string;
+  private _color: string = 'w';
+  private _type: string = 'p';
 
-  constructor(elRef: ElementRef) {
-    let draggy = new Draggable(elRef.nativeElement, {
-      draggable: 'app-chesspiece',
-    });
-  }
+  constructor(elRef: ElementRef) {}
 
   get color() {
     return this._color;
