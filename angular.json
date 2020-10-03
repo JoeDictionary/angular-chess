@@ -123,6 +123,46 @@
           }
         }
       }
+    },
+    "dragon": {
+      "projectType": "library",
+      "root": "projects/dragon",
+      "sourceRoot": "projects/dragon/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/dragon/tsconfig.lib.json",
+            "project": "projects/dragon/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/dragon/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dragon/src/test.ts",
+            "tsConfig": "projects/dragon/tsconfig.spec.json",
+            "karmaConfig": "projects/dragon/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/dragon/tsconfig.lib.json",
+              "projects/dragon/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "angular-chess"
 }

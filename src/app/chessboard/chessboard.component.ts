@@ -1,8 +1,14 @@
-import { Droppable } from '@shopify/draggable';
 import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
-import { DragDropModule, CdkDragDrop, CdkDrag } from '@angular/cdk/drag-drop';
+import {
+  DragDropModule,
+  CdkDragDrop,
+  CdkDrag,
+  CdkDragRelease,
+  CdkDragEnd,
+} from '@angular/cdk/drag-drop';
 import { coerceBooleanProperty, coerceElement } from '@angular/cdk/coercion';
 
+// https://stackoverflow.com/questions/54547772/removing-placeholder-for-drop-area-when-cursor-not-in-drop-zone-in-material-cdk
 @Component({
   selector: 'app-chessboard',
   templateUrl: './chessboard.component.html',
@@ -11,12 +17,7 @@ import { coerceBooleanProperty, coerceElement } from '@angular/cdk/coercion';
 export class ChessboardComponent implements OnInit {
   board = new Array(8).fill(undefined).map(() => new Array(8).fill(undefined));
 
-  constructor(private renderer: Renderer2, private elRef: ElementRef) {
-    const droppy = new Droppable(elRef.nativeElement, {
-      draggable: 'app-chesspiece',
-      dropzone: 'div',
-    });
-  }
+  constructor(private renderer: Renderer2, private elRef: ElementRef) {}
 
   ngOnInit(): void {}
 
@@ -28,12 +29,29 @@ export class ChessboardComponent implements OnInit {
     this.renderer.appendChild(dropTarget, dragged);
   }
 
-  logPredicate(drag: any, drop: any) {
-    console.log(drag, drop);
-    return !drop.element.nativeElement.querySelector('.cdk-drag');
+  logPredicate(drag: CdkDrag, drop: any) {
+    // Gets the first draggable element, if there are any, in the attempted drop container
+    let dropElContent = drop.element.nativeElement.querySelector('.cdk-drag');
+
+    // console.log(dropElContent, drag.element.nativeElement);
+    if (dropElContent === drag.element.nativeElement) return true;
+    return !drop.element.nativeElement.querySelector('app-chesspiece');
   }
 
   logEvent(e: any) {
     console.log(e);
+  }
+
+  dragReleased(e: CdkDragRelease) {
+    e.source.reset();
+    console.log('Released', e);
+  }
+
+  dragDropped(e: any) {
+    console.log('Dropped', e);
+  }
+
+  dragEnded(e: CdkDragEnd) {
+    console.log('Ended', e);
   }
 }
